@@ -332,14 +332,7 @@ public class GenerateExcel {
 
     	styles.put("itemDescribeBlueBGStyle", itemDescribeBlueBGStyle);
 
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
+
     	return styles;
     }
     
@@ -358,7 +351,7 @@ public class GenerateExcel {
 		Workbook workbook = workDiaryExcel();
 		  try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
 		        workbook.write(byteArrayOutputStream);
-		        workbook.close(); // 記得關閉
+		        workbook.close(); 
 		        return byteArrayOutputStream.toByteArray();
 		    }
 	}

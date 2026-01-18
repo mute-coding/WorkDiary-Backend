@@ -1,6 +1,10 @@
 package com.rainey.project.mail;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -20,6 +24,11 @@ public class SendMail {
 	private GenerateExcel generateExcel;
 	@Autowired
 	private JavaMailSender javaMailSender;
+	
+	public String now() {
+	    LocalDateTime now = LocalDateTime.now();
+	    return now.format(DateTimeFormatter.ofPattern("yyyy/MM/dd-HHmmss"));
+	}
     public void sendMail() throws IOException, MessagingException {
     	
     	byte[] excelResource = generateExcel.workbookToByte();
@@ -33,7 +42,7 @@ public class SendMail {
     	mimeMessageHelper.setText("本周工作日誌", true);
 
     	mimeMessageHelper.addAttachment(
-                "工作日誌.xlsx",
+                "工作日誌"+now()+".xlsx",
                 new ByteArrayResource(excelResource)
         );
 

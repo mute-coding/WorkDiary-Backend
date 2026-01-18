@@ -14,6 +14,7 @@ public interface IUnifiedService {
 	List<WorkItem> findAllWorkItem();
 	List<WorkDiary> findAllWorkDiaries();
 	List<Employee> findAllEmpolyees();
+	List<String> findAllDept();
 	WorkDiary save(WorkDiary workDiary);
 	WorkDiary update(Integer id,Map<String, Object>updateFields);
 	void deleteDiaryList(Integer id);

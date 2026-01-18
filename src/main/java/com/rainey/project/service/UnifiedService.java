@@ -120,4 +120,9 @@ public class UnifiedService implements IUnifiedService {
 		// TODO Auto-generated method stub
 		workDiaryRepo.deleteAll();
 	}
+	@Override
+	public List<String> findAllDept() {
+		// TODO Auto-generated method stub
+		return empolyeeRepo.findAllDept();
+	}
 }
