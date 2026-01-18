@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      SA_PASSWORD: "MuteMute!1085123"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "14330:1433"
+    networks:
+      - workdiary-network
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P MuteMute!1085123 -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
+      
+
+  workdiray-app:
+    build: .
+    container_name: workdiary-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:sqlserver://127.0.0.1:1433;databaseName=WorkDiaryProject;encrypt=false"
+      SPRING_DATASOURCE_USERNAME: "sa"
+      SPRING_DATASOURCE_PASSWORD: "MuteMute!1085123"
+    depends_on:
+      - sqlserver
+    networks:
+      - workdiary-network
+
+networks:
+  workdiary-network:
+    driver: bridge

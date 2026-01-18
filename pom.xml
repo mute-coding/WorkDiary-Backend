@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.rainey</groupId>
-	<artifactId>workdiray</artifactId>
+	<artifactId>workdiary</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>workdiray</name>
+	<name>workdiary</name>
 	<description>workdiary</description>
 	<url/>
 	<licenses>
